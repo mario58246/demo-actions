@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 
-VERIFICATION_FLAG = False
+VERIFICATION_FLAG = True
 VERIFICATION_TEXT = "El servicio está listo y la verificación se completó correctamente."
 
 
