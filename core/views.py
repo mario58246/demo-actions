@@ -2,8 +2,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 
-VERIFICATION_FLAG = True
-VERIFICATION_TEXT = "Error"
+VERIFICATION_FLAG = False
+VERIFICATION_TEXT = "Version Buena"
 
 
 def verification(request):
