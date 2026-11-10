@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f5ef">
+  <title>Verificación del servicio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172a28;
+      --muted: #526762;
+      --green: #176b55;
+      --green-pale: #e3f2e9;
+      --coral: #d65f48;
+      --paper: #f2f5ef;
+      --line: #d9e3d9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(135deg, rgba(23, 107, 85, 0.06), transparent 52%),
+        repeating-linear-gradient(0deg, transparent 0 39px, rgba(23, 42, 40, 0.025) 39px 40px);
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(100%, 620px);
+      text-align: center;
+      animation: arrive 500ms ease-out both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 22px;
+      height: 3px;
+      background: var(--coral);
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 8vw, 4.2rem);
+      line-height: 1.05;
+    }
+
+    h1 span { color: var(--green); }
+
+    .panel {
+      margin-top: 34px;
+      padding: 26px clamp(20px, 6vw, 38px);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 18px 48px rgba(23, 42, 40, 0.08);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+    }
+
+    .status::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .status.rejected {
+      background: #fae9e4;
+      color: #a63e2e;
+    }
+
+    p {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Demo Actions</div>
+    <h1>Verificación <span>del servicio</span></h1>
+    <section class="panel" aria-label="Resultado de verificación">
+      <div class="status{% if verification_flag %} rejected{% endif %}">
+        {% if verification_flag %}Verificación rechazada{% else %}Servicio verificado{% endif %}
+      </div>
+      <p>{{ verification_text }}</p>
+    </section>
+  </main>
+</body>
+</html>
